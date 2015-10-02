@@ -1,64 +1,728 @@
+
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Wp-plugin-checker by EarthPeople</title>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WordPress Plugin Checker finds plugins on WordPress sites</title>
+	<link rel="stylesheet" href="./styles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Wp-plugin-checker</h1>
-        <p>WordPress Plugin Checker is a web based tool that check for installed plugins on WordPress sites</p>
+	<meta property="og:title" content="WordPress Plugin Checker" />
+	<meta property="og:site_name" content="WordPress Plugin Checker" />
+	<meta property="og:description" content="Detect WordPress Plugins on (almost) any WordPress powered site" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="http://wppluginchecker.earthpeople.se/" />
+	<meta property="og:image" content="http://earthpeople.se/img/fb-img.png" />
+	<meta property="fb:admins" content="685381489,685381489" />
+</head>
+<body>
 
-        <p class="view"><a href="https://github.com/EarthPeople/wp-plugin-checker">View the Project on GitHub <small>EarthPeople/wp-plugin-checker</small></a></p>
+<div class="container">
 
+		
+	  <div class="jumbotron">
+	  	<h1><a href="/">WordPress Plugin Checker</a></h1>
+		<h2>Find installed plugins on almost any WordPress site</h2>
+				
+		<form>
+			<div class="input-group input-group-lg">
+			  <input 
+				value="" 
+				type="text" 
+				class="form-control" 
+				name="wordpress-site" 
+				id="wordpress-site" 
+				required 
+				autofocus 
+				placeholder="www.example.com"
+			  >
+			  <span class="input-group-btn">
+				<button class="btn btn-default btn-success" type="submit">Check site</button>
+			  </span>
+			</div>
+		</form>
 
-        <ul>
-          <li><a href="https://github.com/EarthPeople/wp-plugin-checker/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/EarthPeople/wp-plugin-checker/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/EarthPeople/wp-plugin-checker">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+	  </div>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
+		<div class="row row-output">
+		<div class="js-output"></div>
+	</div>
+	
+	  <div class="row marketing">
+		
+				
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				<h4 id="what">What is this?</h4>
+				<p>This is a tool to find plugins installed on WordPress powered sites.</p>
+				<p>Check out <a href="http://labs.earthpeople.se/2013/11/detect-wordpress-plugins-with-our-tool/">our blog post</a> for some background info about this.</p>
+			</div>
 
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				<h4 id="who">Who is behind this?</h4>
+				<p>This tool is brought to you by the nice folks at the <a href="http://earthpeople.se/">swedish web agency Earth People</a>.</p>
+			</div>
+		</div>
 
-<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
+		<hr />
 
-<h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating pages manually</h3>
+		<h4 id='plugins'>Plugins than can be detected</h4>
+		<p>Currently we try to detect our <a href='http://profiles.wordpress.org/eskapism/'>own</a> <a href='http://profiles.wordpress.org/earth-people/'>plugins</a> and the 50 <a href='http://wordpress.org/plugins/browse/popular/'>most popular plugins</a>.</p><div class="col-lg-6 col-md-6 col-sm-6"><h5>Plugins by Earth People</h5><ol class="popular-plugins-list popular-plugins-list-isEP">
+				<li 
+					data-plugin-name="CMS Tree Page View"
+					data-plugin-slug="cms-tree-page-view"
+					data-plugin-homepage="http://eskapism.se/code-playground/cms-tree-page-view/"
+					data-plugin-description="Adds a tree view of all pages &amp;#38; custom posts. Get a great overview + options to drag &amp;#38; drop to reorder &amp;#38; option to add multiple pages."
+					data-plugin-author="&lt;a href=&quot;http://eskapism.se/&quot;&gt;P&amp;#228;r Thernstr&amp;#246;m&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/cms-tree-page-view/">CMS Tree Page View</a>
+				
+				<li 
+					data-plugin-name="Admin Menu Tree Page View"
+					data-plugin-slug="admin-menu-tree-page-view"
+					data-plugin-homepage="http://eskapism.se/code-playground/admin-menu-tree-page-view/"
+					data-plugin-description="Get a tree view of all your pages directly in the admin menu. Search, edit, view, re-order/sort and add pages &amp;#8211; all is just one click away!"
+					data-plugin-author="&lt;a href=&quot;http://eskapism.se/&quot;&gt;P&amp;#228;r Thernstr&amp;#246;m&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/admin-menu-tree-page-view/">Admin Menu Tree Page View</a>
+				
+				<li 
+					data-plugin-name="Simple Fields"
+					data-plugin-slug="simple-fields"
+					data-plugin-homepage="http://simple-fields.com"
+					data-plugin-description="With Simple Fields you can add any kind of custom fields to your pages, posts and attachments."
+					data-plugin-author="&lt;a href=&quot;http://eskapism.se/&quot;&gt;P&amp;#228;r Thernstr&amp;#246;m&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/simple-fields/">Simple Fields</a>
+				
+				<li 
+					data-plugin-name="Simple Fields Map extension"
+					data-plugin-slug="simple-fields-map-extension"
+					data-plugin-homepage="http://earthpeople.se/"
+					data-plugin-description="Extension to Simple Fields that adds a field type for selecting a location on a Google Map."
+					data-plugin-author="&lt;a href=&quot;http://earthpeople.se/&quot;&gt;Earth People&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/simple-fields-map-extension/">Simple Fields Map extension</a>
+				
+				<li 
+					data-plugin-name="Simple History"
+					data-plugin-slug="simple-history"
+					data-plugin-homepage="http://eskapism.se/code-playground/simple-history/"
+					data-plugin-description="View changes made by users within WordPress. See who created a page, uploaded an attachment or approved an comment, and more."
+					data-plugin-author="&lt;a href=&quot;http://eskapism.se/&quot;&gt;P&amp;#228;r Thernstr&amp;#246;m&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/simple-history/">Simple History</a>
+				
+				<li 
+					data-plugin-name="Simple SEO (Search Engine Optimization)"
+					data-plugin-slug="simple-seo"
+					data-plugin-homepage="http://eskapism.se/code-playground/simple-seo/"
+					data-plugin-description="Change the page title and menu label output for any page or post.
+Useful for SEO and usability reasons and almost a necessarity on a CMS-like website."
+					data-plugin-author="&lt;a href=&quot;http://eskapism.se/&quot;&gt;P&amp;#228;r Thernstr&amp;#246;m&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/simple-seo/">Simple SEO (Search Engine Optimization)</a>
+				
+				<li 
+					data-plugin-name="EP Admin Messages"
+					data-plugin-slug="ep-admin-messages"
+					data-plugin-homepage="http://earthpeople.se/"
+					data-plugin-description="Show messages in WP Admin. Different messages can be shown at different places, for different people."
+					data-plugin-author="&lt;a href=&quot;http://earthpeople.se/&quot;&gt;Earth People&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/ep-admin-messages/">EP Admin Messages</a>
+				
+				<li 
+					data-plugin-name="EP Social Widget"
+					data-plugin-slug="ep-social-widget"
+					data-plugin-homepage="http://www.darkwhispering.com"
+					data-plugin-description="Very small and easy to use widget and shortcode to display social icons on your site. Facebook, Twitter, Flickr, Google Plus, Youtube and more."
+					data-plugin-author="&lt;a href=&quot;http://www.darkwhispering.com&quot;&gt;Mattias Hedman&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/ep-social-widget/">EP Social Widget</a>
+				
+				<li 
+					data-plugin-name="Nice Navigation"
+					data-plugin-slug="nice-navigation"
+					data-plugin-homepage="http://eskapism.se/code-playground/nice-navigation/"
+					data-plugin-description="A widget that add a list of your pages as a list with option to expand and collaps the page tree with a nice slide animation effect."
+					data-plugin-author="&lt;a href=&quot;http://eskapism.se/&quot;&gt;P&amp;#228;r Thernstr&amp;#246;m&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/nice-navigation/">Nice Navigation</a>
+				
+				<li 
+					data-plugin-name="EP Hashimage"
+					data-plugin-slug="ep-hashimage"
+					data-plugin-homepage="http://darkwhispering.com/wordpress-plugins"
+					data-plugin-description="Display image by hashtag from twitter or instagram in your template, post/page or widget area using template tag, shortcode or the widget."
+					data-plugin-author="&lt;a href=&quot;http://darkwhispering.com&quot;&gt;Mattias Hedman&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/ep-hashimage/">EP Hashimage</a>
+				
+				<li 
+					data-plugin-name="EP Post Widget"
+					data-plugin-slug="ep-post-widget"
+					data-plugin-homepage="http://www.earthpeople.se"
+					data-plugin-description="Display posts from one or more categories with ease. Not a million different settings, but still customizable!"
+					data-plugin-author="&lt;a href=&quot;http://www.earthpeople.se&quot;&gt;Mattias Hedman, Earth People AB&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/ep-post-widget/">EP Post Widget</a>
+				
+				<li 
+					data-plugin-name="EP Display Users"
+					data-plugin-slug="ep-display-users"
+					data-plugin-homepage="http://darkwhispering.com/wordpress-plugins"
+					data-plugin-description="Adding extra user info fields and options to display user on the site with template code, shortcode or widget."
+					data-plugin-author="&lt;a href=&quot;http://darkwhispering.com&quot;&gt;Mattias Hedman&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/ep-display-users/">EP Display Users</a>
+				
+				<li 
+					data-plugin-name="Hundstall 404"
+					data-plugin-slug="hundstall-404"
+					data-plugin-homepage="http://earthpeople.se/labs/2011/12/hundstallet-404-wordpress-plugin/"
+					data-plugin-description="We love dogs. This plugin shows a random homeless dog on your 404. Why waste the space?"
+					data-plugin-author="&lt;a href=&quot;http://earthpeople.se/&quot;&gt;Peder Fj&amp;#228;llstr&amp;#246;m, Earth People AB&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/hundstall-404/">Hundstall 404</a>
+				
+				<li 
+					data-plugin-name="EP Comments Export"
+					data-plugin-slug="ep-comments-export"
+					data-plugin-homepage=""
+					data-plugin-description="Simple plugin to export comments and the comment meta data from your blog to a csv file that can be save on your local computer."
+					data-plugin-author="Mattias Hedman, Earth People AB"
+					>
+					<a href="https://wordpress.org/plugins/ep-comments-export/">EP Comments Export</a>
+				
+				<li 
+					data-plugin-name="EP Image Base64 Encode"
+					data-plugin-slug="ep-image-base64-encode"
+					data-plugin-homepage="http://earthpeople.se"
+					data-plugin-description="Will base64 encode all images inside a post content. Useful for offline caching in html5 / webviews."
+					data-plugin-author="&lt;a href=&quot;http://earthpeople.se&quot;&gt;Peder Fj&amp;#228;llstr&amp;#246;m&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/ep-image-base64-encode/">EP Image Base64 Encode</a>
+				</ol></div><div class="col-lg-6 col-md-6 col-sm-6"><h5>The 50 most popular WordPress plugins</h5><ol class="popular-plugins-list ">
+				<li 
+					data-plugin-name="Akismet"
+					data-plugin-slug="akismet"
+					data-plugin-homepage="http://akismet.com/"
+					data-plugin-description="Akismet checks your comments against the Akismet Web service to see if they look like spam or not."
+					data-plugin-author="&lt;a href=&quot;http://automattic.com/wordpress-plugins/&quot;&gt;Automattic&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/akismet/">Akismet</a>
+				
+				<li 
+					data-plugin-name="WordPress SEO by Yoast"
+					data-plugin-slug="wordpress-seo"
+					data-plugin-homepage="https://yoast.com/wordpress/plugins/seo/#utm_source=wpadmin&amp;#038;utm_medium=plugin&amp;#038;utm_campaign=wpseoplugin"
+					data-plugin-description="Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the WordPress SEO plugin by Yoast."
+					data-plugin-author="&lt;a href=&quot;https://yoast.com/&quot;&gt;Joost de Valk&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/wordpress-seo/">WordPress SEO by Yoast</a>
+				
+				<li 
+					data-plugin-name="Contact Form 7"
+					data-plugin-slug="contact-form-7"
+					data-plugin-homepage="http://contactform7.com/"
+					data-plugin-description="Just another contact form plugin. Simple but flexible."
+					data-plugin-author="&lt;a href=&quot;http://ideasilo.wordpress.com/&quot;&gt;Takayuki Miyoshi&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/contact-form-7/">Contact Form 7</a>
+				
+				<li 
+					data-plugin-name="Jetpack by WordPress.com"
+					data-plugin-slug="jetpack"
+					data-plugin-homepage="http://wordpress.org/extend/plugins/jetpack/"
+					data-plugin-description="Supercharge your WordPress site with powerful features previously only available to WordPress.com users."
+					data-plugin-author="&lt;a href=&quot;http://jetpack.me&quot;&gt;Automattic&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/jetpack/">Jetpack by WordPress.com</a>
+				
+				<li 
+					data-plugin-name="Wordfence Security"
+					data-plugin-slug="wordfence"
+					data-plugin-homepage="http://www.wordfence.com/"
+					data-plugin-description="Wordfence Security is a free enterprise class security and performance plugin that makes your site up to 50 times faster and more secure."
+					data-plugin-author="&lt;a href=&quot;http://www.wordfence.com/&quot;&gt;Wordfence&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/wordfence/">Wordfence Security</a>
+				
+				<li 
+					data-plugin-name="NextGEN Gallery"
+					data-plugin-slug="nextgen-gallery"
+					data-plugin-homepage="http://www.nextgen-gallery.com"
+					data-plugin-description="The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 10 million downloads."
+					data-plugin-author="&lt;a href=&quot;http://www.photocrati.com&quot;&gt;Photocrati Media&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/nextgen-gallery/">NextGEN Gallery</a>
+				
+				<li 
+					data-plugin-name="MailPoet Newsletters"
+					data-plugin-slug="wysija-newsletters"
+					data-plugin-homepage="http://www.mailpoet.com/"
+					data-plugin-description="Send newsletters, post notifications or autoresponders from WordPress easily, and beautifully."
+					data-plugin-author="&lt;a href=&quot;http://www.mailpoet.com/&quot;&gt;MailPoet&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/wysija-newsletters/">MailPoet Newsletters</a>
+				
+				<li 
+					data-plugin-name="All in One SEO Pack"
+					data-plugin-slug="all-in-one-seo-pack"
+					data-plugin-homepage="http://semperfiwebdesign.com"
+					data-plugin-description="All in One SEO Pack is a WordPress SEO plugin to automatically optimize your WordPress blog for Search Engines such as Google."
+					data-plugin-author="&lt;a href=&quot;http://michaeltorbert.com&quot;&gt;Michael Torbert&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO Pack</a>
+				
+				<li 
+					data-plugin-name="WP Super Cache"
+					data-plugin-slug="wp-super-cache"
+					data-plugin-homepage="http://wordpress.org/plugins/wp-super-cache/"
+					data-plugin-description="A very fast caching engine for WordPress that produces static html files."
+					data-plugin-author="&lt;a href=&quot;http://automattic.com/&quot;&gt;Automattic&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/wp-super-cache/">WP Super Cache</a>
+				
+				<li 
+					data-plugin-name="WordPress Importer"
+					data-plugin-slug="wordpress-importer"
+					data-plugin-homepage="http://wordpress.org/extend/plugins/wordpress-importer/"
+					data-plugin-description="Import posts, pages, comments, custom fields, categories, tags and more from a WordPress export file."
+					data-plugin-author="&lt;a href=&quot;http://wordpress.org/&quot;&gt;wordpressdotorg&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/wordpress-importer/">WordPress Importer</a>
+				
+				<li 
+					data-plugin-name="Google XML Sitemaps"
+					data-plugin-slug="google-sitemap-generator"
+					data-plugin-homepage="http://www.arnebrachhold.de/redir/sitemap-home/"
+					data-plugin-description="This plugin will generate a special XML sitemap which will help search engines to better index your blog."
+					data-plugin-author="&lt;a href=&quot;http://www.arnebrachhold.de/&quot;&gt;Arne Brachhold&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/google-sitemap-generator/">Google XML Sitemaps</a>
+				
+				<li 
+					data-plugin-name="iThemes Security (formerly Better WP Security)"
+					data-plugin-slug="better-wp-security"
+					data-plugin-homepage="http://ithemes.com/security"
+					data-plugin-description="The easiest, most effective way to secure WordPress in seconds."
+					data-plugin-author="&lt;a href=&quot;http://ithemes.com&quot;&gt;iThemes.com&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/better-wp-security/">iThemes Security (formerly Better WP Security)</a>
+				
+				<li 
+					data-plugin-name="WooCommerce - excelling eCommerce"
+					data-plugin-slug="woocommerce"
+					data-plugin-homepage="http://www.woothemes.com/woocommerce/"
+					data-plugin-description="WooCommerce is a powerful, extendable eCommerce plugin that helps you sell anything. Beautifully."
+					data-plugin-author="&lt;a href=&quot;http://woothemes.com&quot;&gt;WooThemes&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/woocommerce/">WooCommerce - excelling eCommerce</a>
+				
+				<li 
+					data-plugin-name="Meta Slider"
+					data-plugin-slug="ml-slider"
+					data-plugin-homepage="http://www.metaslider.com"
+					data-plugin-description="Easy to use WordPress slider plugin. Create SEO optimised responsive slideshows with Nivo Slider, Flex Slider, Coin Slider and Responsive Slides."
+					data-plugin-author="&lt;a href=&quot;http://www.metaslider.com&quot;&gt;Matcha Labs&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/ml-slider/">Meta Slider</a>
+				
+				<li 
+					data-plugin-name="Fast Secure Contact Form"
+					data-plugin-slug="si-contact-form"
+					data-plugin-homepage="http://www.FastSecureContactForm.com/"
+					data-plugin-description="An easy and powerful form builder that lets your visitors send you email. Blocks all automated spammers. No templates to mess with."
+					data-plugin-author="&lt;a href=&quot;http://www.642weather.com/weather/scripts.php&quot;&gt;Mike Challis, Ken Carlson&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/si-contact-form/">Fast Secure Contact Form</a>
+				
+				<li 
+					data-plugin-name="WP-Optimize"
+					data-plugin-slug="wp-optimize"
+					data-plugin-homepage="http://www.ruhanirabin.com/wp-optimize/"
+					data-plugin-description="Simple but effective plugin allows you to extensively clean up your WordPress database and optimize it without doing manual queries."
+					data-plugin-author="&lt;a href=&quot;https://github.com/ruhanirabin/WP-Optimize&quot;&gt;Ruhani Rabin&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/wp-optimize/">WP-Optimize</a>
+				
+				<li 
+					data-plugin-name="InfiniteWP Client"
+					data-plugin-slug="iwp-client"
+					data-plugin-homepage="http://infinitewp.com/"
+					data-plugin-description="Install this plugin on unlimited sites and manage them all from a central dashboard.
+This plugin communicates with your InfiniteWP Admin Panel."
+					data-plugin-author="&lt;a href=&quot;http://www.revmakx.com&quot;&gt;Revmakx&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/iwp-client/">InfiniteWP Client</a>
+				
+				<li 
+					data-plugin-name="WordPress Social Sharing Optimization"
+					data-plugin-slug="wpsso"
+					data-plugin-homepage="http://surniaulula.com/extend/plugins/wpsso/"
+					data-plugin-description="Display your content in the best possible way on Facebook, Google+, Twitter, Pinterest, etc. - no matter how your webpage is shared!"
+					data-plugin-author="&lt;a href=&quot;http://surniaulula.com/&quot;&gt;Jean-Sebastien Morisset&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/wpsso/">WordPress Social Sharing Optimization</a>
+				
+				<li 
+					data-plugin-name="WPtouch Mobile Plugin"
+					data-plugin-slug="wptouch"
+					data-plugin-homepage="http://www.wptouch.com/"
+					data-plugin-description="Create a slick mobile WordPress website with just a few clicks."
+					data-plugin-author="&lt;a href=&quot;http://www.wptouch.com/&quot;&gt;BraveNewCode Inc.&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/wptouch/">WPtouch Mobile Plugin</a>
+				
+				<li 
+					data-plugin-name="NextGEN Facebook: Advanced Optimization for All Social Websites"
+					data-plugin-slug="nextgen-facebook"
+					data-plugin-homepage="http://surniaulula.com/extend/plugins/nextgen-facebook/"
+					data-plugin-description="Make sure social websites present your content correctly, no matter how your webpage is shared - from buttons, browser add-ons, or pasted URLs."
+					data-plugin-author="&lt;a href=&quot;http://surniaulula.com/&quot;&gt;Jean-Sebastien Morisset&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/nextgen-facebook/">NextGEN Facebook: Advanced Optimization for All Social Websites</a>
+				
+				<li 
+					data-plugin-name="Google Maps Ready!"
+					data-plugin-slug="google-maps-ready"
+					data-plugin-homepage="http://readyshoppingcart.com/product/google-maps-plugin/"
+					data-plugin-description="Display custom Google Maps. Set markers and locations with text, images, categories and links. Customize google map without any programming skills"
+					data-plugin-author="&lt;a href=&quot;http://readyshoppingcart.com&quot;&gt;Google Maps plugin&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/google-maps-ready/">Google Maps Ready!</a>
+				
+				<li 
+					data-plugin-name="Captcha"
+					data-plugin-slug="captcha"
+					data-plugin-homepage="http://bestwebsoft.com/plugin/"
+					data-plugin-description="This plugin allows you to implement super security captcha form into web forms."
+					data-plugin-author="&lt;a href=&quot;http://bestwebsoft.com/&quot;&gt;BestWebSoft&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/captcha/">Captcha</a>
+				
+				<li 
+					data-plugin-name="W3 Total Cache"
+					data-plugin-slug="w3-total-cache"
+					data-plugin-homepage="http://www.w3-edge.com/wordpress-plugins/w3-total-cache/"
+					data-plugin-description="Easy Web Performance Optimization (WPO) using caching: browser, page, object, database, minify and content delivery network support."
+					data-plugin-author="&lt;a href=&quot;http://www.linkedin.com/in/w3edge&quot;&gt;Frederick Townes&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/w3-total-cache/">W3 Total Cache</a>
+				
+				<li 
+					data-plugin-name="Shareaholic &amp;#124; share buttons &amp;#38; related posts"
+					data-plugin-slug="shareaholic"
+					data-plugin-homepage="https://shareaholic.com/publishers/"
+					data-plugin-description="Adds an attractive social bookmarking menu and related content widget to your posts, pages, index, or any combination of the three."
+					data-plugin-author="&lt;a href=&quot;https://shareaholic.com&quot;&gt;Shareaholic&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/shareaholic/">Shareaholic &amp;#124; share buttons &amp;#38; related posts</a>
+				
+				<li 
+					data-plugin-name="MailChimp for WordPress"
+					data-plugin-slug="mailchimp-for-wp"
+					data-plugin-homepage="https://dannyvankooten.com/mailchimp-for-wordpress/"
+					data-plugin-description="The best MailChimp plugin to get more email subscribers. Easily add sign-up forms and sign-up checkboxes to your WordPress website."
+					data-plugin-author="&lt;a href=&quot;http://dannyvankooten.com&quot;&gt;Danny van Kooten&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/mailchimp-for-wp/">MailChimp for WordPress</a>
+				
+				<li 
+					data-plugin-name="UpdraftPlus Backup and Restoration for WordPress"
+					data-plugin-slug="updraftplus"
+					data-plugin-homepage="http://updraftplus.com"
+					data-plugin-description="Backup and restoration made easy. Complete backups; manual or scheduled (backup to S3, Dropbox, Google Drive, Rackspace, FTP, SFTP, email + others)."
+					data-plugin-author="&lt;a href=&quot;http://updraftplus.com&quot;&gt;UpdraftPlus.Com, DavidAnderson&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/updraftplus/">UpdraftPlus Backup and Restoration for WordPress</a>
+				
+				<li 
+					data-plugin-name="TinyMCE Advanced"
+					data-plugin-slug="tinymce-advanced"
+					data-plugin-homepage="http://www.laptoptips.ca/projects/tinymce-advanced/"
+					data-plugin-description="Enables the advanced features of TinyMCE, the WordPress WYSIWYG editor."
+					data-plugin-author="&lt;a href=&quot;http://www.laptoptips.ca/&quot;&gt;Andrew Ozz&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/tinymce-advanced/">TinyMCE Advanced</a>
+				
+				<li 
+					data-plugin-name="Broken Link Checker"
+					data-plugin-slug="broken-link-checker"
+					data-plugin-homepage="http://w-shadow.com/blog/2007/08/05/broken-link-checker-for-wordpress/"
+					data-plugin-description="This plugin will check your posts, comments and other content for broken links and missing images, and notify you if any are found."
+					data-plugin-author="&lt;a href=&quot;http://w-shadow.com/&quot;&gt;Janis Elsts&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/broken-link-checker/">Broken Link Checker</a>
+				
+				<li 
+					data-plugin-name="Contact Form"
+					data-plugin-slug="contact-form-plugin"
+					data-plugin-homepage="http://bestwebsoft.com/plugin/"
+					data-plugin-description="Add Contact Form to your WordPress website."
+					data-plugin-author="&lt;a href=&quot;http://bestwebsoft.com/&quot;&gt;BestWebSoft&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/contact-form-plugin/">Contact Form</a>
+				
+				<li 
+					data-plugin-name="Shortcodes Ultimate"
+					data-plugin-slug="shortcodes-ultimate"
+					data-plugin-homepage="http://gndev.info/shortcodes-ultimate/"
+					data-plugin-description="Supercharge your WordPress theme with mega pack of shortcodes"
+					data-plugin-author="&lt;a href=&quot;http://gndev.info/&quot;&gt;Vladimir Anokhin&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/shortcodes-ultimate/">Shortcodes Ultimate</a>
+				
+				<li 
+					data-plugin-name="Ninja Forms"
+					data-plugin-slug="ninja-forms"
+					data-plugin-homepage="http://ninjaforms.com/"
+					data-plugin-description="Forms created with a simple drag and drop interface. Contact forms, Email collection forms, or any other form you want on your WordPress site."
+					data-plugin-author="&lt;a href=&quot;http://ninjaforms.com&quot;&gt;The WP Ninjas&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/ninja-forms/">Ninja Forms</a>
+				
+				<li 
+					data-plugin-name="All In One WP Security &amp;#38; Firewall"
+					data-plugin-slug="all-in-one-wp-security-and-firewall"
+					data-plugin-homepage="http://www.tipsandtricks-hq.com/wordpress-security-and-firewall-plugin"
+					data-plugin-description="A comprehensive, user-friendly, all in one WordPress security and firewall plugin for your site."
+					data-plugin-author="&lt;a href=&quot;http://www.tipsandtricks-hq.com/&quot;&gt;Tips and Tricks HQ, Peter, Ruhul, Ivy&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/all-in-one-wp-security-and-firewall/">All In One WP Security &amp;#38; Firewall</a>
+				
+				<li 
+					data-plugin-name="WP Statistics"
+					data-plugin-slug="wp-statistics"
+					data-plugin-homepage="http://wp-statistics.com/"
+					data-plugin-description="Complete statistics for your WordPress site."
+					data-plugin-author="&lt;a href=&quot;http://wp-statistics.com/&quot;&gt;Mostafa Soufi &amp;#38; Greg Ross&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/wp-statistics/">WP Statistics</a>
+				
+				<li 
+					data-plugin-name="Page Builder by SiteOrigin"
+					data-plugin-slug="siteorigin-panels"
+					data-plugin-homepage="http://siteorigin.com/page-builder/"
+					data-plugin-description="Build responsive page layouts using the widgets you know and love using this simple drag and drop page builder."
+					data-plugin-author="&lt;a href=&quot;http://siteorigin.com&quot;&gt;Greg Priday&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/siteorigin-panels/">Page Builder by SiteOrigin</a>
+				
+				<li 
+					data-plugin-name="Google Analytics for WordPress"
+					data-plugin-slug="google-analytics-for-wordpress"
+					data-plugin-homepage="http://yoast.com/wordpress/google-analytics/#utm_source=wordpress&amp;#038;utm_medium=plugin&amp;#038;utm_campaign=wpgaplugin&amp;#038;utm_content=v420"
+					data-plugin-description="Track your WordPress site easily and with lots of metadata: views per author &amp;#38; category, automatic tracking of outbound clicks and pageviews."
+					data-plugin-author="&lt;a href=&quot;http://yoast.com/&quot;&gt;Joost de Valk&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/google-analytics-for-wordpress/">Google Analytics for WordPress</a>
+				
+				<li 
+					data-plugin-name="WP Google Maps"
+					data-plugin-slug="wp-google-maps"
+					data-plugin-homepage="http://www.wpgmaps.com"
+					data-plugin-description="The easiest to use Google maps plugin! Create custom maps with high quality markers containing locations, categories, descriptions, images and links."
+					data-plugin-author="&lt;a href=&quot;http://www.wpgmaps.com&quot;&gt;WP Google Maps&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/wp-google-maps/">WP Google Maps</a>
+				
+				<li 
+					data-plugin-name="Really Simple CAPTCHA"
+					data-plugin-slug="really-simple-captcha"
+					data-plugin-homepage="http://contactform7.com/captcha/"
+					data-plugin-description="Really Simple CAPTCHA is a CAPTCHA module intended to be called from other plugins. It is originally created for my Contact Form 7 plugin."
+					data-plugin-author="&lt;a href=&quot;http://ideasilo.wordpress.com/&quot;&gt;Takayuki Miyoshi&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/really-simple-captcha/">Really Simple CAPTCHA</a>
+				
+				<li 
+					data-plugin-name="YouTube"
+					data-plugin-slug="youtube-embed-plus"
+					data-plugin-homepage="http://www.embedplus.com/dashboard/pro-easy-video-analytics.aspx"
+					data-plugin-description="YouTube embed plugin with basic features and convenient defaults. Upgrade now to add tracking, instant video SEO tags, and much more!"
+					data-plugin-author="&lt;a href=&quot;http://www.embedplus.com&quot;&gt;EmbedPlus Team&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/youtube-embed-plus/">YouTube</a>
+				
+				<li 
+					data-plugin-name="WP-PageNavi"
+					data-plugin-slug="wp-pagenavi"
+					data-plugin-homepage="http://wordpress.org/extend/plugins/wp-pagenavi/"
+					data-plugin-description="Adds a more advanced paging navigation interface."
+					data-plugin-author="Lester 'GaMerZ' Chan &amp;#38; scribu"
+					>
+					<a href="https://wordpress.org/plugins/wp-pagenavi/">WP-PageNavi</a>
+				
+				<li 
+					data-plugin-name="Breadcrumb NavXT"
+					data-plugin-slug="breadcrumb-navxt"
+					data-plugin-homepage="http://mtekk.us/code/breadcrumb-navxt/"
+					data-plugin-description="Adds breadcrumb navigation showing the visitor&amp;#039;s path to their current location."
+					data-plugin-author="&lt;a href=&quot;http://mtekk.us/&quot;&gt;John Havlik&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/breadcrumb-navxt/">Breadcrumb NavXT</a>
+				
+				<li 
+					data-plugin-name="Advanced Custom Fields"
+					data-plugin-slug="advanced-custom-fields"
+					data-plugin-homepage="http://www.advancedcustomfields.com/"
+					data-plugin-description="Fully customise WordPress edit screens with powerful fields. Boasting a professional interface and a powerful API, it&amp;#8217;s a must have for any web deve"
+					data-plugin-author="&lt;a href=&quot;http://www.elliotcondon.com/&quot;&gt;Elliot Condon&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/advanced-custom-fields/">Advanced Custom Fields</a>
+				
+				<li 
+					data-plugin-name="All-in-One Event Calendar"
+					data-plugin-slug="all-in-one-event-calendar"
+					data-plugin-homepage="http://time.ly/"
+					data-plugin-description="A calendar system with many views, upcoming events widget, color-coded
+categories, recurrence, and import/export of facebook events and .ics
+feeds."
+					data-plugin-author="&lt;a href=&quot;http://time.ly/&quot;&gt;Time.ly Network Inc.&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/all-in-one-event-calendar/">All-in-One Event Calendar</a>
+				
+				<li 
+					data-plugin-name="Google Analytics Dashboard for WP"
+					data-plugin-slug="google-analytics-dashboard-for-wp"
+					data-plugin-homepage="http://deconf.com"
+					data-plugin-description="Displays Google Analytics Reports and Real-Time Statistics in your Dashboard. Automatically inserts the tracking code in every page of your website."
+					data-plugin-author="&lt;a href=&quot;http://deconf.com&quot;&gt;Alin Marcu&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/google-analytics-dashboard-for-wp/">Google Analytics Dashboard for WP</a>
+				
+				<li 
+					data-plugin-name="Regenerate Thumbnails"
+					data-plugin-slug="regenerate-thumbnails"
+					data-plugin-homepage="http://www.viper007bond.com/wordpress-plugins/regenerate-thumbnails/"
+					data-plugin-description="Allows you to regenerate your thumbnails after changing the thumbnail sizes."
+					data-plugin-author="&lt;a href=&quot;http://www.viper007bond.com/&quot;&gt;Viper007Bond&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/regenerate-thumbnails/">Regenerate Thumbnails</a>
+				
+				<li 
+					data-plugin-name="User Role Editor"
+					data-plugin-slug="user-role-editor"
+					data-plugin-homepage="http://role-editor.com"
+					data-plugin-description="User Role Editor WordPress plugin makes the role capabilities changing easy. You can change any WordPress user role."
+					data-plugin-author="&lt;a href=&quot;http://www.shinephp.com&quot;&gt;Vladimir Garagulya&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/user-role-editor/">User Role Editor</a>
+				
+				<li 
+					data-plugin-name="Newsletter"
+					data-plugin-slug="newsletter"
+					data-plugin-homepage="http://www.satollo.net/plugins/newsletter"
+					data-plugin-description="Add a real newsletter to your blog. In seconds. For free. With unlimited emails and subscribers."
+					data-plugin-author="&lt;a href=&quot;http://www.satollo.net&quot;&gt;Stefano Lissa&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/newsletter/">Newsletter</a>
+				
+				<li 
+					data-plugin-name="BuddyPress"
+					data-plugin-slug="buddypress"
+					data-plugin-homepage="http://buddypress.org"
+					data-plugin-description="Social networking in a box. Build a social network for your company, school, sports team, or niche community."
+					data-plugin-author="&lt;a href=&quot;http://buddypress.org/community/members/&quot;&gt;The BuddyPress Community&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/buddypress/">BuddyPress</a>
+				
+				<li 
+					data-plugin-name="Sucuri Security - Auditing, Malware Scanner and Hardening"
+					data-plugin-slug="sucuri-scanner"
+					data-plugin-homepage="http://wordpress.sucuri.net/"
+					data-plugin-description="The Sucuri Security - Auditing, SiteCheck Malware Scanner and Hardening is a security plugin enables you to scan your WordPress site using Sucuri Site"
+					data-plugin-author="&lt;a href=&quot;http://sucuri.net&quot;&gt;Sucuri, INC&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/sucuri-scanner/">Sucuri Security - Auditing, Malware Scanner and Hardening</a>
+				
+				<li 
+					data-plugin-name="The Events Calendar"
+					data-plugin-slug="the-events-calendar"
+					data-plugin-homepage=""
+					data-plugin-description="The Events Calendar is a carefully crafted, extensible plugin that lets you easily share your events. Beautiful. Solid. Awesome."
+					data-plugin-author="&lt;a href=&quot;http://m.tri.be/1x&quot;&gt;Modern Tribe, Inc.&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/the-events-calendar/">The Events Calendar</a>
+				
+				<li 
+					data-plugin-name="Black Studio TinyMCE Widget"
+					data-plugin-slug="black-studio-tinymce-widget"
+					data-plugin-homepage="http://wordpress.org/extend/plugins/black-studio-tinymce-widget/"
+					data-plugin-description="Adds a WYSIWYG widget based on the standard TinyMCE WordPress visual editor."
+					data-plugin-author="&lt;a href=&quot;http://www.blackstudio.it&quot;&gt;Black Studio&lt;/a&gt;"
+					>
+					<a href="https://wordpress.org/plugins/black-studio-tinymce-widget/">Black Studio TinyMCE Widget</a>
+					
+		</div>
+	  </div>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+	  <div class="row row-changelog">
+	  	<h4 id='changelog'>Changelog</h4>
 
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+	  	<h5>30 sept 2015</h5>
+	  	<ul>
+	  		<li>Added more paths to check for WordPress plugins in. Props <a href="https://twitter.com/frozzare/">@frozzare</a>.</li>
+	  	</ul>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+	  	<h5>25 nov 2013</h5>
+	  	<ul>
+	  		<li>First version! It works. Props mostly <a href="https://twitter.com/eskapism/">@eskapism</a>.</li>
+	  	</ul>
 
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+	  </div>
 
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/EarthPeople">EarthPeople</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+	  <div class="footer">
+		<p>
+			<a href="http://earthpeople.se/">
+				<img src="/img/logo.png" alt="Earth People Logotype" width="30" height="74" />
+			</a>
+		</p>
+		<p>
+			<a href="http://earthpeople.se/">This is an Earth People Joint.</a>
+		</p>
+	  </div>
+
+	</div><!-- /container -->
+
+	<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script src="./inc/scripts.js?v=3"></script>
+
+	<div class="share-oh-please-share">
+		<div class="fb-like" data-href="http://wppluginchecker.earthpeople.se/" data-layout="button_count" data-action="recommend" data-show-faces="false" data-share="false"></div>
+		<br>
+		<a href="https://twitter.com/share" class="twitter-share-button" data-lang="en" data-url="http://wppluginchecker.earthpeople.se" data-related="earthpeople:The makers of the WordPress Plugin Checker">Tweet</a>
+		<br>
+		<div class="g-plusone" data-width="300" data-size="medium" data-href="http://wppluginchecker.earthpeople.se"></div>
+	</div>
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+	<script type="text/javascript">
+	(function() {
+		var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		po.src = 'https://apis.google.com/js/platform.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	})();
+	</script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-44872713-4', '162.243.101.47');
+		ga('send', 'pageview');
+	</script>
+
+</body>
 </html>
